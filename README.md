@@ -49,11 +49,19 @@ Developed by: RAKSHATHA S A
 RegisterNumber: 212225220079
 */
 ```
-module fal (sum, cout, a, b, cin) ;
-output sum; output cout;
-input a; input b;
-input cin;
-wire wi,w2, w3; assign wl=a^b; assign w2=a&b; assign w3=wl&cin; assign sum=wl^cin; assign cout=w2 |w3;
+module exp3_0079(
+    input A, B, Cin,
+    output SUM, CARRY, BO, DIFF
+);
+
+// Full Adder logic
+assign SUM = A ^ B ^ Cin;
+assign CARRY = (A & B) | (B & Cin) | (A & Cin);
+
+// Full Subtractor logic
+assign DIFF = A ^ B ^ Cin;
+assign BO = (~A & B) | (B & Cin) | (~A & Cin);
+
 endmodule
 ```
 
